@@ -11,51 +11,48 @@ def animate(j):
     line.set_data(x_array, final_density[j,:]) #Crée un graphique pour chaque densite sauvegarde
     return line,
 
-dt = 1E-7
-dx = 0.001
-nx = int(1/dx)*2
-nt = 90000 # En fonction du potentiel il faut modifier ce parametre car sur certaines animations la particule atteins les bords
-n_frames = int(nt/1000)+1 #nombre d image dans notre animation
-s = dt/(dx**2)
-v0 = -4000
-e = 5#Valeur du rapport E/V0
-E = e*v0
-k = math.sqrt(2*abs(E))
+dt=1E-7
+dx=0.001
+nx=int(1/dx)*2
+nt=90000 # En fonction du potentiel il faut modifier ce parametre car sur certaines animations la particule atteins les bords
+n_frames=int(nt/1000)+1#nombre d image dans notre animation
+s=dt/(dx**2)
+v0=-4000
+e=5#Valeur du rapport E/V0
+E=e*v0
+k=math.sqrt(2*abs(E))
 
-#ecrire le potentiel la matrice (resolution de schrodinger)
-
-
-
+#ecrire potentiel et matrice pour resolution shrodinger
+#initialiser tableaux x_array(stocker nx=>np.zeros(nx)) et v_potential ainsi que la densitée
 x_array = np.linspace(0, (nx - 1) * dx, nx)
 V_potential = np.zeros(nx)
-V_potential[(x_array >= 0.8) & (x_array <=0.9)] = v0
 
-v = np.zeros(nx)
+V_potential[(x_array>=0.8)&(x_array<=0.9)] = v0
 
 #gaussian wave packet (Paquet ondes gaussien)
-xc = 0.6
-sigma = 0.05
-normalisation = 1/(math.sqrt(sigma*math.sqrt(math.pi)))
+xc=0.6
+sigma=0.05
+normalisation=1/(math.sqrt(sigma*math.sqrt(math.pi)))
 wp_gauss = normalisation * np.exp(1j * k * x_array - ((x_array - xc) ** 2) / (2 * (sigma ** 2)))
 #wave packet Real part 
-wp_re = np.zeros(nx)
-wp_re[:] = np.real(wp_gauss[:])
+wp_re=np.zeros(nx)
+wp_re[:]=np.real(wp_gauss[:])
 #wave packet Imaginary part 
-wp_im = np.zeros(nx)
-wp_im[:] = np.imag(wp_gauss[:])
+wp_im=np.zeros(nx)
+wp_im[:]=np.imag(wp_gauss[:])
 
 density = np.zeros((nt,nx))
 density[0,:] = np.absolute(wp_gauss[:]) ** 2
 
-final_density = np.zeros((n_frames,nx))
+final_density =np.zeros((n_frames,nx))
 
 #Algo devant retourner la densité de probabilité de présence de la particule à différents instants
 
-b = np.zeros(nx)
+b)np.zeros(nx)
+it=0
 
-it = 0
-for i in range(1,nt):
-   if 
+for i in range(1,nt){
+}
 
 plot_title = "E/Vo="+str(e)
 
